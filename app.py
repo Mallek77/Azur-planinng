@@ -7,7 +7,7 @@ import json
 # --- CONFIGURATION PAGE ---
 st.set_page_config(
     layout="wide",
-    page_title="Azur Levage – Planning",
+    page_title="Azur Levage – Planing",
     page_icon="🏗️"
 )
 
