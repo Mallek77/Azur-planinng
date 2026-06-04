@@ -2,6 +2,7 @@ import streamlit as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
+import json
 
 # --- CONFIGURATION PAGE ---
 st.set_page_config(
@@ -20,8 +21,10 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- AUTHENTIFICATION ---
-if 'connecte' not in st.session_state: st.session_state.connecte = False
-if 'utilisateur' not in st.session_state: st.session_state.utilisateur = ""
+if 'connecte' not in st.session_state:
+    st.session_state.connecte = False
+if 'utilisateur' not in st.session_state:
+    st.session_state.utilisateur = ""
 
 if not st.session_state.connecte:
     st.markdown("<div style='text-align:center'><h1>🏗️ AZUR LEVAGE</h1></div>", unsafe_allow_html=True)
@@ -33,19 +36,24 @@ if not st.session_state.connecte:
                 st.session_state.connecte = True
                 st.session_state.utilisateur = user
                 st.rerun()
-            else: st.error("Identifiant ou mot de passe incorrect.")
+            else:
+                st.error("Identifiant ou mot de passe incorrect.")
     st.stop()
 
 # --- CONNEXION GOOGLE SHEETS ---
 @st.cache_resource
 def get_sheet():
-    creds_dict = st.secrets["gcp_service_account"]
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    creds_dict = json.loads(st.secrets["GOOGLE_CREDENTIALS"])
     creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
-    gc = gspread.authorize(creds)
-    return gc.open("Feuille de calcul sans titre").sheet1
+    client = gspread.authorize(creds)
+    return client.open("azur-planning").sheet1  # ← mets le vrai nom de ton fichier Google Sheets
 
-sheet = get_sheet()
+try:
+    sheet = get_sheet()
+except Exception as e:
+    st.error(f"❌ Erreur de connexion Google Sheets : {e}")
+    st.stop()
 
 # --- APP PRINCIPALE ---
 st.markdown(f"""
@@ -79,7 +87,11 @@ with col_form:
 with col_table:
     st.markdown('<div class="table-card">', unsafe_allow_html=True)
     st.subheader("📋 Planning en cours")
-    data = sheet.get_all_records()
+    try:
+        data = sheet.get_all_records()
+    except Exception as e:
+        st.error(f"Erreur de lecture : {e}")
+        data = []
     if data:
         df = pd.DataFrame(data)
         st.dataframe(df, use_container_width=True)
