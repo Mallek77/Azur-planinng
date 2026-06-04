@@ -4,14 +4,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import json
 
-# --- CONFIGURATION PAGE ---
-st.set_page_config(
-    layout="wide",
-    page_title="Azur Levage – Planing",
-    page_icon="🏗️"
-)
+st.set_page_config(layout="wide", page_title="Azur Levage – Planning", page_icon="🏗️")
 
-# --- CSS ---
 st.markdown("""
 <style>
 .stApp { background-color: #f0f4f9 !important; }
@@ -20,11 +14,8 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# --- AUTHENTIFICATION ---
-if 'connecte' not in st.session_state:
-    st.session_state.connecte = False
-if 'utilisateur' not in st.session_state:
-    st.session_state.utilisateur = ""
+if 'connecte' not in st.session_state: st.session_state.connecte = False
+if 'utilisateur' not in st.session_state: st.session_state.utilisateur = ""
 
 if not st.session_state.connecte:
     st.markdown("<div style='text-align:center'><h1>🏗️ AZUR LEVAGE</h1></div>", unsafe_allow_html=True)
@@ -40,14 +31,13 @@ if not st.session_state.connecte:
                 st.error("Identifiant ou mot de passe incorrect.")
     st.stop()
 
-# --- CONNEXION GOOGLE SHEETS ---
 @st.cache_resource
 def get_sheet():
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
     creds_dict = json.loads(st.secrets["GOOGLE_CREDENTIALS"])
     creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
     client = gspread.authorize(creds)
-    return client.open("azur-planning").sheet1  # ← mets le vrai nom de ton fichier Google Sheets
+    return client.open("Azur-planing").sheet1
 
 try:
     sheet = get_sheet()
@@ -55,7 +45,6 @@ except Exception as e:
     st.error(f"❌ Erreur de connexion Google Sheets : {e}")
     st.stop()
 
-# --- APP PRINCIPALE ---
 st.markdown(f"""
 <div class="app-header">
     <h1>🏗️ AZUR LEVAGE</h1>
