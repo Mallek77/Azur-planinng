@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ── Fond bleu marine global ── */
+.stApp,
+[data-testid="stAppViewContainer"],
+[data-testid="stAppViewContainer"] > .main,
+[data-testid="stMain"],
+section.main {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(160deg, #041428 0%, #0b2e59 45%, #123d6e 100%) !important;
+    background-color: #0b2e59 !important;
+    color: #e8f0fe;
+}
+
+/* Masquer éléments Streamlit par défaut */
+[data-testid="stHeader"],
+[data-testid="stToolbar"],
+footer {
+    visibility: hidden;
+    height: 0;
+    pointer-events: none;
+}
+
+.block-container {
+    padding: 2rem 1.5rem 3rem !important;
+    max-width: 920px;
+}
+
+/* ── Page de connexion ── */
+.login-hero {
+    text-align: center;
+    padding: 2.5rem 1rem 1.5rem;
+}
+
+.login-icon {
+    font-size: 3.5rem;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+.login-hero h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.login-hero p {
+    margin: 0.5rem 0 0;
+    font-size: 1rem;
+    color: rgba(232, 240, 254, 0.75);
+}
+
+.login-form-title {
+    margin: 0 0 1.25rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0b2e59;
+    text-align: center;
+}
+
+/* ── Cartes & formulaires ── */
+[data-testid="stForm"],
+.form-card {
+    background: #ffffff;
+    padding: 1.75rem 2rem;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.app-header {
+    background: linear-gradient(135deg, #0d3568, #1a5a8a);
+    padding: 1.5rem 2rem;
+    border-radius: 18px;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 1.65rem;
+    font-weight: 700;
+}
+
+.app-header p {
+    margin: 0.35rem 0 0;
+    opacity: 0.85;
+    font-size: 0.9rem;
+}
+
+[data-testid="stVerticalBlockBorderWrapper"] {
+    background: #ffffff !important;
+    border: none !important;
+    border-radius: 18px !important;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+    padding: 0.25rem 1.25rem 1.25rem;
+    margin-bottom: 1.5rem;
+    color: #1a2b42;
+}
+
+[data-testid="stVerticalBlockBorderWrapper"] h2,
+[data-testid="stVerticalBlockBorderWrapper"] h3,
+[data-testid="stMarkdownContainer"] h2,
+[data-testid="stMarkdownContainer"] h3 {
+    color: #0b2e59 !important;
+}
+
+/* ── Champs de saisie ── */
+[data-testid="stTextInput"] label,
+[data-testid="stDateInput"] label,
+[data-testid="stNumberInput"] label,
+[data-testid="stTextInput"] label p,
+[data-testid="stDateInput"] label p,
+[data-testid="stNumberInput"] label p {
+    color: #2c3e5a !important;
+    font-weight: 500 !important;
+    font-size: 0.85rem !important;
+}
+
+[data-testid="stTextInput"] input,
+[data-testid="stNumberInput"] input {
+    border-radius: 10px !important;
+    border: 1.5px solid #c8d6e8 !important;
+    background: #f7f9fc !important;
+    color: #1a2b42 !important;
+}
+
+[data-testid="stTextInput"] input:focus,
+[data-testid="stNumberInput"] input:focus {
+    border-color: #2e6da4 !important;
+    box-shadow: 0 0 0 2px rgba(46, 109, 164, 0.2) !important;
+}
+
+/* ── Boutons ── */
+[data-testid="stFormSubmitButton"] button,
+[data-testid="stButton"] button[kind="primary"],
+[data-testid="baseButton-primary"] {
+    background: linear-gradient(135deg, #0b2e59, #1a5a8a) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em;
+    padding: 0.6rem 1.2rem !important;
+    transition: opacity 0.2s ease;
+}
+
+[data-testid="stFormSubmitButton"] button:hover,
+[data-testid="stButton"] button[kind="primary"]:hover {
+    opacity: 0.9;
+}
+
+[data-testid="stButton"] button[kind="secondary"] {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+    color: #e8f0fe !important;
+    border-radius: 10px !important;
+}
+
+/* ── Tableau & messages ── */
+[data-testid="stDataFrame"] {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+[data-testid="stAlert"] {
+    border-radius: 12px;
+}
+
+hr {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .login-hero h1 { font-size: 1.6rem !important; }
+    .app-header h1 { font-size: 1.3rem !important; }
+    .block-container { padding: 1.25rem 0.75rem 2rem !important; }
+    [data-testid="stForm"],
+    .section-card { padding: 1.25rem 1rem; }
+}
