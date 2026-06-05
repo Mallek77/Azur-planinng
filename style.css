@@ -1,6 +1,4 @@
 
-        """
-        <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
         html, body, .stApp {
@@ -51,7 +49,4 @@
             border: 1px solid #ccc;
             color: #555;
         }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+      
