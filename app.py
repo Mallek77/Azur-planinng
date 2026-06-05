@@ -43,64 +43,6 @@ st.set_page_config(
 # CSS GLOBAL
 # ─────────────────────────────────────────────
 
-def inject_css() -> None:
-    st.markdown(
-        """
-        <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-        html, body, .stApp {
-            font-family: 'Inter', sans-serif;
-            background-color: #f0f4f9 !important;
-        }
-
-        /* Marges réduites sur mobile */
-        .block-container {
-            padding-left: 12px !important;
-            padding-right: 12px !important;
-            max-width: 960px;
-        }
-
-        /* Header */
-        .app-header {
-            background: linear-gradient(135deg, #0b2e59, #1a5276);
-            padding: 20px 24px;
-            border-radius: 16px;
-            color: white;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 24px rgba(11,46,89,.20);
-        }
-        .app-header h1 { margin: 0; font-size: 26px; font-weight: 700; }
-        .app-header p  { margin: 4px 0 0; opacity: .80; font-size: 14px; }
-
-        /* Cartes */
-        .card {
-            background: white;
-            padding: 20px 24px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(11,46,89,.10);
-            margin-bottom: 20px;
-        }
-
-        /* Responsive typography */
-        @media (max-width: 768px) {
-            .app-header h1 { font-size: 20px !important; }
-            h2 { font-size: 17px !important; }
-        }
-
-        /* Champs de formulaire */
-        input, select, textarea, button { max-width: 100% !important; }
-
-        /* Bouton déconnexion discret */
-        div[data-testid="stButton"] button[kind="secondary"] {
-            background: transparent;
-            border: 1px solid #ccc;
-            color: #555;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
 
 
 # ─────────────────────────────────────────────
